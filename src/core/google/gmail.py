@@ -1,4 +1,4 @@
-from src.google.google_authentication import Create_Service
+from src.core.google.google_authentication import Create_Service
 import base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText

@@ -1,7 +1,7 @@
-from src.google.gmail import GmailBase
+
 import csv
 import tkinter as tk
-from view.main_page_view import MainPage
+from src.view.main_page_view import MainPageView
 
 
 
@@ -20,18 +20,17 @@ class Application(tk.Tk):
         main_frame.pack(fill='both',expand=True)
 
         self.frames = {}
-        pages = (MainPage,)
+        pages = (MainPageView,)
 
         for page in pages:
             frame = page(master=main_frame)
             self.frames[page] = frame
             frame.place(relx=0,rely=0) 
         
-        self.show_frame(MainPage)
+        self.show_frame(MainPageView)
 
 
     def show_frame(self,frame_name):
-        print(self.frames)
         frame = self.frames[frame_name]
         frame.tkraise()
 
@@ -42,6 +41,7 @@ class Application(tk.Tk):
 
 if __name__ == "__main__":
     root = Application()
+    root.resizable(height = 0, width = 0)
     root.mainloop()
 
 # CLIENT_FILE = "credentials.json"
