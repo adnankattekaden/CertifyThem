@@ -1,30 +1,58 @@
 from src.google.gmail import GmailBase
+import csv
+import tkinter as tk
+from view.main_page_view import MainPage
 
 
-CLIENT_FILE = "credentials.json"
-client = GmailBase(CLIENT_FILE)
 
-to = 'adnankattekaden2020@gmail.com'
-subject = 'Congratulations!! You had successfully completed the bootcamp Build.myweb v2'
-body = """
-<p>Simple HTML.</p>
-<h3><em>So very simple.</em></h3>
-<p><span style="color: #ff0000;">Lame joke that follows.</span></p>
-<p>
-  <span style="color: #ff0000;"
-    ><img
-      src="https://i.imgur.com/mxVlFHM.jpeg"
-      alt="Lame joke"
-      width="245"
-      height="221"
-  /></span>
-</p>
-<h2 style="padding-left: 30px;">do you?</h2>
-<ul>
-  <li>yes</li>
-  <li>no</li>
-  <li><strong>not entirely sure</strong></li>
-</ul>
-"""
+HEIGHT = 600
+WIDTH = 1024
 
-client.create_message(to,subject,body)
+class Application(tk.Tk):
+    TITLE = "CertifyThem"
+    def __init__(self):
+        super().__init__()
+        self.title(self.TITLE)
+        self.geometry(f"{WIDTH}x{HEIGHT}")
+
+        main_frame = tk.Frame(self,height=HEIGHT,width=WIDTH)
+        main_frame.pack_propagate(0)
+        main_frame.pack(fill='both',expand=True)
+
+        self.frames = {}
+        pages = (MainPage,)
+
+        for page in pages:
+            frame = page(master=main_frame)
+            self.frames[page] = frame
+            frame.place(relx=0,rely=0) 
+        
+        self.show_frame(MainPage)
+
+
+    def show_frame(self,frame_name):
+        print(self.frames)
+        frame = self.frames[frame_name]
+        frame.tkraise()
+
+
+        
+
+
+
+if __name__ == "__main__":
+    root = Application()
+    root.mainloop()
+
+# CLIENT_FILE = "credentials.json"
+# client = GmailBase(CLIENT_FILE)
+
+# with open('Build.MyWebMeetUpEmailList.csv', 'r') as csvfile:
+#     emails = csv.DictReader(csvfile)
+#     for counts,email in enumerate(emails):
+#         to = email.get('Email')
+
+#         subject = ''
+        # body = """"""
+#         client.create_message(to,subject,body,message_type='html')
+#         print("Mail Sucessfuly sented to {} ,count {}".format(to,counts))

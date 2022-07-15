@@ -2,3 +2,8 @@
 quickstart.py
 credentials.json
 *.pickle
+
+test.py
+__pycache__
+*.html
+*.csv
