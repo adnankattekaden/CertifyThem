@@ -8,18 +8,21 @@ class GmailBase:
     API_VERSION = 'v1'
     SCOPES = ['https://mail.google.com/']
     
-    def __init__(self,CLIENT_FILE) -> None:
+    def __init__(self) -> None:
         """
-        Create an instance and Authenticate User and 
-        Assign self.service Authorized Gmail API 
-        service instance.
-        
-        Args:
-            CLIENT_FILE: Path of Authorized Gmail API Data
+        Create an instance of Gmail
         """
 
-        self.service = Create_Service(CLIENT_FILE,self.API_NAME,self.API_VERSION,self.SCOPES)
+
+
+
+    def authenticate(self, client_file):
+        self.service = Create_Service(client_file,self.API_NAME,self.API_VERSION,self.SCOPES)
         self.service.users().getProfile(userId='me').execute()
+        return True
+
+
+        
         
     def create_message(self,to,subject,body,message_type='plain',user_id='me'):
         """

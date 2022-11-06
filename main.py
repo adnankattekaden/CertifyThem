@@ -1,5 +1,3 @@
-
-import csv
 import tkinter as tk
 from src.view.main_page_view import MainPageView
 
@@ -43,16 +41,3 @@ if __name__ == "__main__":
     root = Application()
     root.resizable(height = 0, width = 0)
     root.mainloop()
-
-# CLIENT_FILE = "credentials.json"
-# client = GmailBase(CLIENT_FILE)
-
-# with open('Build.MyWebMeetUpEmailList.csv', 'r') as csvfile:
-#     emails = csv.DictReader(csvfile)
-#     for counts,email in enumerate(emails):
-#         to = email.get('Email')
-
-#         subject = ''
-        # body = """"""
-#         client.create_message(to,subject,body,message_type='html')
-#         print("Mail Sucessfuly sented to {} ,count {}".format(to,counts))
