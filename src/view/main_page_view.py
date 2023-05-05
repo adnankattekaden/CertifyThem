@@ -42,7 +42,7 @@ class MainPageView(tk.Frame):
         targetLabelFrame.place(rely=0.32,relx=0.02,height=300,width=470)
         self.targetTreeview = ttk.Treeview(targetLabelFrame,show="headings")
         self.targetTreeview.place(relheight=1,relwidth=1)
-        self.targetTreeview["columns"] = ['ID',"Emails"]
+        self.targetTreeview["columns"] = ['ID',"Name","Emails"]
 
         for column_name in self.targetTreeview["columns"]:
             self.targetTreeview.heading(column_name,text=column_name)
